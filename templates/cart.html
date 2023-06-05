@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cart.css') }}">
+    <script src="{{ url_for('static', filename='cart.js') }}"></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <div class="container">
+            <h2>Shopping Cart</h2>
+
+            {% if cart %}
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>${{ item.price }}</td>
+                        <td>
+                            <input type="number" min="1" value="{{ item.quantity }}" class="quantity-input" data-product-id="{{ item.id }}">
+                        </td>
+                        <td>${{ item.total }}</td>
+                        <td>
+                            <button class="btn btn-remove" data-product-id="{{ item.id }}">Remove</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="cart-total">
+                <p>Total: ${{ cart_total }}</p>
+                <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+            </div>
+            {% else %}
+            <p>Your cart is empty.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>

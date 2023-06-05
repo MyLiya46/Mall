@@ -1,0 +1,35 @@
+/* Main Styles */
+main {
+    padding: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.cart-table th {
+    text-align: left;
+}
+
+.cart-table td:last-child {
+    text-align: center;
+}
+
+.quantity-input {
+    width: 50px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='details.css') }}">
+    <script src="{{ url_for('static', filename='details.js') }}"></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <div class="container">
+            <h2>Product Details</h2>
+
+            <div class="product-details">
+                <div class="product-image">
+                    <img src="{{ url_for('serve_image', filename=product.image.filename) }}" alt="{{ product.name }}">
+                </div>
+
+                <div class="product-info">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p class="price">${{ product.price }}</p>
+                    <a href="/cart/add/{{ product.id }}" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <h3>Comments</h3>
+
+                <div class="comments">
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <p class="user">{{ comment.user }}</p>
+                        <p class="comment-text">{{ comment.text }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <form id="comment-form">
+                    <h4>Leave a Comment</h4>
+                    <input type="text" id="user-name" placeholder="Your Name">
+                    <textarea id="comment-text" placeholder="Your Comment"></textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>

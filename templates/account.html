@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
+    <title>Account</title>
+</head>
+<body>
+    
+    {% include 'header.html' %}
+    
+    <div class="container">
+        <div class="user-details">
+            <h2>{{ user.username }}</h2>
+            <div class="user-info">
+                <p><strong>Name:</strong>{{ user.username }}</p>
+                <p><strong>Email:</strong>{{ user.email }}</p>
+                <!-- Add more user information as needed -->
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

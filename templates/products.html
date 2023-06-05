@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}">
+    <script src="{{ url_for('static', filename='products.js') }}"></script>
+
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <h2>Product Catalog</h2>
+
+        <div class="product-list">
+            {% for product in products %}
+            <div class="product">
+                <img src="{{ url_for('serve_image', filename=product.image.filename) }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p class="price">￥{{ product.price }}</p>
+                <p class="stock">{{ product.stock }}</p>
+                <a href="{{ url_for('details', product_id=product.id )}}" class="btn">View Details</a>
+                <a href="/cart/add/{{ product.id }}" class="btn btn-primary">Add to Cart</a>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </main>
+
+    {% include 'footer.html' %}
+
+</body>
+</html>

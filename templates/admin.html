@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <h1>Welcome to the Admin Page</h1>
+
+    <!-- Display the data obtained from the server -->
+    <h2>商品列表</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <!-- Add more table headers as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in goods_data %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.price }}</td>
+                    <!-- Add more table cells as needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>在线用户列表</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Online User</th>
+                <th>Password</th>
+                <th>Last Active</th>
+                <th>End Point</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in online_user_data %}
+                <tr>
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.password }}</td>
+                    <td>{{ item.last_active }}</td>
+                    <td>{{ item.endpoint }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>注册用户列表</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Emain</th>
+                <th>MobilePhone</th>
+                <th>Last_Active</th>
+                <th>Create_Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.mobilephone }}</td>
+                <td>{{ user.last_active }}</td>
+                <td>{{ user.create_time }}</td>
+                <td>
+                    <a href="/edit/{{ user.username }}">Edit</a>
+                    <a href="/delete/{{ user.username }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
+    
+</body>
+</html>

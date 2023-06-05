@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Map</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='map.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+  <!-- <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/extension/bmap.min.js"></script>
+  <!-- <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=ELfMCZFNAOkIsMLCL5yvOWRPGZb7AxWF"></script> -->
+  <!-- 引入刚刚下载的 ECharts 文件 -->
+  
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/map/js/china.js"></script> -->
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/map/js/world.js"></script> -->
+  <script src="https://api.map.baidu.com/api?v=3.0&ak=ejiMl9fRMtsj0ti76bTTkF2Vq5Y59BVy"></script>
+</head>
+<body>
+  
+  {% include 'header.html' %}
+
+  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+  <!-- <div id="my_map" style="width: 1000px; height: 1000px"></div> -->
+  <div id="map"></div>
+  <script type="text/javascript" src="{{ url_for('static', filename='map.js') }}"></script>
+
+  {% include 'footer.html' %}
+</body>
+</html>

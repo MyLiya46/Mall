@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Statistics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='statistics.css') }}">
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+  </head>
+  <body>
+    
+    {% include 'header.html' %}
+
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <!-- <div id="main" style="width: 800px;height: 500px;"></div> -->
+    <div id="stock" style="width: 1400px;height: 650px;"></div>
+    <!-- <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+      // 指定图表的配置项和数据
+        var option = {
+            title: {
+            text: '测试'
+            },
+            tooltip: {},
+            legend: {
+            data: ['地区股票数量']
+            },
+            xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            },
+            yAxis: {},
+            series: [
+            {
+                name: '上市公司数量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }
+            ]
+        };
+
+        console.log(option)
+      // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script> -->
+    <script>
+        var myChart = echarts.init(document.getElementById('stock'));
+        var option = {
+        xAxis: {
+            data: []
+            // data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
+            //trade_date
+          },
+        yAxis: {},
+        series: [
+            {
+                type: 'candlestick',
+                // data: [
+                //     [20, 34, 10, 38],
+                //     [40, 35, 30, 50],
+                //     [31, 38, 33, 44],
+                //     [38, 15, 5, 42]
+                // //[开盘价，收盘价，最低价，最高价]
+                // //[open,close,low,high]
+                // ]
+                data: []
+            }
+        ]
+        };// end of option definition
+        myChart.setOption(option);
+        console.log("ready to ajax")
+
+        setInterval(function(){$.ajax({
+        type: "GET",
+        url: "{{ url_for('data') }}",
+        success: function(data, status){
+            console.log("success")
+            _data = JSON.parse(data)
+            option.xAxis.data.push(_data.trade_date)
+            option.series[0].data.push(_data.trade_data)
+            console.log(option)
+            myChart.setOption(option);
+        }
+      }
+      )
+    },1000)
+    </script>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

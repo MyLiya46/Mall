@@ -1,0 +1,19 @@
+<header>
+    <h1>Welcome to Our Mall</h1>
+    <div id="menu_bar">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('map') }}">Map</a></li>
+                <li><a href="{{ url_for('statistics') }}">Statistics</a></li>
+                <li><a href="{{ url_for('cart') }}">Cart</a></li>
+                <li><a href="{{ url_for('account') }}">Account</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+        <form action="{{ url_for('logout') }}" method="POST" id="logout-form">
+            <button type="submit">Log Out</button>
+        </form>
+    </div>
+</header>

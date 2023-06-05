@@ -1,0 +1,77 @@
+/* Main Styles */
+main {
+    padding: 20px;
+}
+
+.product-details {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.product-details .product-image {
+    flex: 0 0 40%;
+    margin-right: 20px;
+}
+
+.product-details .product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-details .product-info {
+    flex: 1;
+}
+
+.product-details h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.product-details p.price {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.comments-section {
+    margin-top: 50px;
+}
+
+.comments-section h3 {
+    margin-bottom: 20px;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+.comment p.user {
+    font-weight: bold;
+}
+
+.comment p.comment-text {
+    margin-top: 5px;
+}
+
+#comment-form {
+    margin-top: 20px;
+}
+
+#comment-form input,
+#comment-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
